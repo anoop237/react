@@ -38,7 +38,7 @@ export default class App extends Component < {} > {
                 College: Rajkiya Engineering College, Banda
                 </Text>
                 <Text style = {styles.info}>
-                Experience: 1 + years
+                Experience: 1+ years
                 </Text>
             </View>
         );
