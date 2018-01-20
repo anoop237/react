@@ -1,0 +1,17 @@
+{
+  "name": "react_js3",
+  "version": "1.0.0",
+  "description": "A project focusing on React and related tools",
+  "main": "index.js",
+  "scripts": {
+    "start": "httpster -d ./dist -p 3000" 
+  },
+  "author": "Anoop Kumar",
+  "license": "MIT",
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-preset-latest": "^6.24.1",
+    "babel-preset-react": "^6.24.1",
+    "babel-preset-stage-0": "^6.24.1"
+  }
+}
