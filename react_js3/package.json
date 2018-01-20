@@ -4,7 +4,7 @@
   "description": "A project focusing on React and related tools",
   "main": "index.js",
   "scripts": {
-    "start": "webpack-dev-server --hot"
+    "start": "./node_modules/.bin/webpack-dev-server"
   },
   "author": "Anoop Kumar",
   "license": "MIT",
