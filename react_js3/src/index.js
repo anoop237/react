@@ -1,6 +1,11 @@
-const style={backgroundColor:'#3bd76f',color:'#ffffff',padding:'20px',margin:0};
+import React from 'react';
+import ReactDOM from 'react-dom'
+import {name,qual} from './lib'
 ReactDOM.render(
-  <h1 style={style}>Welcome to React.js</h1>,
+  <div>
+    {name}
+    {qual}
+  </div>,
   document.getElementById('root')
 );
 
