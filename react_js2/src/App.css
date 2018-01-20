@@ -1,0 +1,27 @@
+
+.header{
+  background:#000;
+  color: #fff;
+  padding:20px;
+  font-size: 20px;
+}
+.heading{
+  margin:20px;
+}
+.table{
+  border:1px solid;
+  border-collapse: collapse;
+  margin: 20px;
+}
+.table-row{
+  border:1px solid;
+}
+.table-row td,.table-row th{
+  padding: 20px;
+}
+thead .table-row{
+  background:#eee;
+}
+tbody .table-row:nth-child(even){
+  background:#eee;
+}

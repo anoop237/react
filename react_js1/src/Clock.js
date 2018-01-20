@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
 
-class App extends React.Component {
+class Clock extends React.Component {
   constructor(){
   	super();
   	this.state = {h:'00',m:'00',s:'00'};
@@ -43,4 +43,4 @@ class App extends React.Component {
     return <div className="clock">{this.state.h}:{this.state.m}:{this.state.s} </div>;
   }
 }
-export default App;
+export default Clock;
