@@ -1,6 +1,6 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
-import SkiDayCount from './components/SkiDayCount.js';
+import {render} from 'react-dom';
+import {SkiDayCount} from './components/SkiDayCount';
 
 window.React = React
-ReactDOM.render(<SkiDayCount/>,document.getElementById('root'));
+render(<SkiDayCount total={60} powder={30} backcountry={10} goal={100}/>,document.getElementById('root'));

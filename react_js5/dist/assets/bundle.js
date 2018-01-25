@@ -965,16 +965,12 @@ var _react2 = _interopRequireDefault(_react);
 
 var _reactDom = __webpack_require__(18);
 
-var _reactDom2 = _interopRequireDefault(_reactDom);
-
 var _SkiDayCount = __webpack_require__(27);
-
-var _SkiDayCount2 = _interopRequireDefault(_SkiDayCount);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 window.React = _react2.default;
-_reactDom2.default.render(_react2.default.createElement(_SkiDayCount2.default, null), document.getElementById('root'));
+(0, _reactDom.render)(_react2.default.createElement(_SkiDayCount.SkiDayCount, { total: 60, powder: 30, backcountry: 10, goal: 100 }), document.getElementById('root'));
 
 /***/ }),
 /* 16 */
@@ -18275,6 +18271,7 @@ module.exports = camelize;
 Object.defineProperty(exports, "__esModule", {
     value: true
 });
+exports.SkiDayCount = undefined;
 
 var _react = __webpack_require__(4);
 
@@ -18289,8 +18286,14 @@ var _propTypes2 = _interopRequireDefault(_propTypes);
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var createReactClass = __webpack_require__(36);
-var SkiDayCount = createReactClass({
+var SkiDayCount = exports.SkiDayCount = createReactClass({
     displayName: "SkiDayCount",
+    percentToDecimal: function percentToDecimal(decimal) {
+        return decimal * 100 + ' %';
+    },
+    calculateProgress: function calculateProgress(total, goal) {
+        return this.percentToDecimal(total / goal);
+    },
     render: function render() {
         return _react2.default.createElement(
             'div',
@@ -18301,7 +18304,8 @@ var SkiDayCount = createReactClass({
                 _react2.default.createElement(
                     'span',
                     null,
-                    '5 Days'
+                    this.props.total,
+                    ' Days'
                 )
             ),
             _react2.default.createElement(
@@ -18310,7 +18314,8 @@ var SkiDayCount = createReactClass({
                 _react2.default.createElement(
                     'span',
                     null,
-                    '2 Powder Days'
+                    this.props.powder,
+                    ' Powder Days'
                 )
             ),
             _react2.default.createElement(
@@ -18319,13 +18324,32 @@ var SkiDayCount = createReactClass({
                 _react2.default.createElement(
                     'span',
                     null,
-                    '1 Hiking Day'
+                    this.props.backcountry,
+                    ' Hiking Day'
+                )
+            ),
+            _react2.default.createElement(
+                'div',
+                { className: 'goal-days' },
+                _react2.default.createElement(
+                    'span',
+                    null,
+                    this.props.goal
+                )
+            ),
+            _react2.default.createElement(
+                'div',
+                { className: 'goal-days' },
+                'Progress ',
+                _react2.default.createElement(
+                    'span',
+                    null,
+                    this.calculateProgress(this.props.total, this.props.goal)
                 )
             )
         );
     }
 });
-exports.default = SkiDayCount;
 
 /***/ }),
 /* 28 */
@@ -18367,7 +18391,7 @@ exports = module.exports = __webpack_require__(30)(false);
 
 
 // module
-exports.push([module.i, ".ski-day-count {\n  padding: 50px; }\n\n.total-days {\n  font-size: 30px;\n  color: #000222;\n  margin: 15px auto 50px;\n  text-align: center; }\n\n.powder-days {\n  font-size: 30px;\n  color: #000222;\n  float: left; }\n\n.backcountry-days {\n  font-size: 30px;\n  color: #000222;\n  float: right; }\n", ""]);
+exports.push([module.i, ".ski-day-count {\n  padding: 50px; }\n\n.total-days {\n  font-size: 30px;\n  color: #000222;\n  margin: 15px auto 50px;\n  text-align: center; }\n\n.powder-days {\n  font-size: 30px;\n  color: #000222;\n  float: left; }\n\n.backcountry-days {\n  font-size: 30px;\n  color: #000222;\n  float: right; }\n\n.goal-days {\n  text-align: center;\n  font-size: 30px;\n  padding: 75px; }\n", ""]);
 
 // exports
 

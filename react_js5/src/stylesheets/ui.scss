@@ -4,7 +4,7 @@ $margin : 15px auto 50px;
 $left-float: left;
 $right-float: right;
 $center: center;
-.ski-day-count{
+.ski-day-count {
     padding :50px
 }
 .total-days{
@@ -22,4 +22,9 @@ $center: center;
     font-size:$font;
     color: $color;
     float: $right-float;
+}
+.goal-days{
+    text-align: $center;
+    font-size:$font;
+    padding : 75px;
 }
