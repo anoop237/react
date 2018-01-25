@@ -1,0 +1,25 @@
+$color : #000222;
+$font : 30px;
+$margin : 15px auto 50px;
+$left-float: left;
+$right-float: right;
+$center: center;
+.ski-day-count{
+    padding :50px
+}
+.total-days{
+    font-size:$font;
+    color: $color;
+    margin: $margin;
+    text-align: $center;
+}
+.powder-days{
+    font-size:$font;
+    color: $color;
+    float: $left-float;
+}
+.backcountry-days{
+    font-size:$font;
+    color: $color;
+    float: $right-float;
+}
