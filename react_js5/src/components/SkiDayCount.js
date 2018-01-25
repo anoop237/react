@@ -1,5 +1,6 @@
 import React from 'react';
 import '../stylesheets/ui.scss';
+import Terrain from 'react-icons/lib/md/terrain'
 import PropTypes from 'prop-types';
 var createReactClass = require('create-react-class');
 export const SkiDayCount = createReactClass({
@@ -23,7 +24,7 @@ export const SkiDayCount = createReactClass({
                 <span>{this.props.backcountry} Hiking Day</span>
             </div>
             <div className="goal-days">
-                <span>{this.props.goal}</span>
+                <Terrain/><span>{this.props.goal}</span>
             </div>
              <div className="goal-days">
                 Progress <span>{this.calculateProgress(this.props.total,this.props.goal)}</span>
