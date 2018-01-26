@@ -1073,7 +1073,7 @@ var _SkiDayCount = __webpack_require__(29);
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 window.React = _react2.default;
-(0, _reactDom.render)(_react2.default.createElement(_SkiDayCount.SkiDayCount, { total: 60, powder: 30, backcountry: 10, goal: 100 }), document.getElementById('root'));
+(0, _reactDom.render)(_react2.default.createElement(_SkiDayCount.SkiDayCount, { total: 50, powder: 30, backcountry: 10, goal: 100 }), document.getElementById('root'));
 
 /***/ }),
 /* 18 */
