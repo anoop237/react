@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import '../stylesheets/ui.scss';
 import Terrain from 'react-icons/lib/md/terrain'
 import SnowFlake from 'react-icons/lib/ti/weather-snow'
@@ -13,4 +14,10 @@ export default class SkiDayRow extends React.Component {
                 </tr>
            );
     }
+}
+SkiDayRow.propTypes = {
+    date: PropTypes.object,
+    resort: PropTypes.string,
+    powder: PropTypes.bool,
+    backcountry :PropTypes.bool
 }
