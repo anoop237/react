@@ -4,7 +4,7 @@ import SkiDayList from './SkiDayList.js';
 import {SkiDayCount} from './SkiDayCount';
 
 export default class App extends React.Component{
-    constructor(){
+    constructor(props){
         super();
         this.state = {
                     allSkiDays:[
