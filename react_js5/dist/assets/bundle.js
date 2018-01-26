@@ -19867,6 +19867,12 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 var createReactClass = __webpack_require__(42);
 var SkiDayCount = exports.SkiDayCount = createReactClass({
     displayName: "SkiDayCount",
+    propTypes: {
+        total: _propTypes2.default.number,
+        powder: _propTypes2.default.number,
+        backcountry: _propTypes2.default.number,
+        goal: _propTypes2.default.array
+    },
     percentToDecimal: function percentToDecimal(decimal) {
         return decimal * 100 + ' %';
     },

@@ -7,6 +7,12 @@ import PropTypes from 'prop-types';
 var createReactClass = require('create-react-class');
 export const SkiDayCount = createReactClass({
     displayName: "SkiDayCount",
+    propTypes:{
+        total: PropTypes.number,
+        powder: PropTypes.number,
+        backcountry:PropTypes.number,
+        goal : PropTypes.array
+    },
     percentToDecimal(decimal){
         return ((decimal*100)+' %');
     },
