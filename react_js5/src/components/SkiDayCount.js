@@ -34,3 +34,4 @@ export const SkiDayCount = createReactClass({
         </div>);
     }
 })
+SkiDayCount.defaultProps={total:50,powder:40,backcountry:10,goal:100}
