@@ -24947,11 +24947,11 @@ var SkiDayList = function (_React$Component) {
         value: function render() {
             var filter = this.props.filter;
             var days = this.props.days;
-            console.log(filter);console.log(days);
+            //console.log(filter);console.log(days);
             var filteredDays = !filter || !filter.match(/powder|backcountry/) ? days : days.filter(function (day) {
                 return day[filter];
             });
-            console.log(filteredDays);
+            //console.log(filteredDays);
             return _react2.default.createElement(
                 'div',
                 null,

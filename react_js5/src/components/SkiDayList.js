@@ -6,7 +6,7 @@ import {Link} from 'react-router'
 export default class SkiDayList extends React.Component {
     render(){
         const filter = this.props.filter;
-        //const days = this.props.days;
+        const days = this.props.days;
         //console.log(filter);console.log(days);
         const filteredDays = (!filter|| !filter.match(/powder|backcountry/))?days:days.filter(day=>day[filter]);
         //console.log(filteredDays);

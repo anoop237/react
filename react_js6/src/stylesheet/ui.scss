@@ -1,0 +1,33 @@
+body{
+    margin :0;
+    box-sizing: border-box;
+}
+.about{
+    padding: 20px;
+}
+.top-menu{
+    list-style-type: none;
+    width: 100%;
+    background: #430493; 
+}
+.top-menu li{
+    float: left;
+    padding: 20px;
+}
+.top-menu li a{
+    color:#fff;
+    text-decoration: none;
+}
+.side-menu{
+    list-style-type: none;
+    height: 100%;
+    float: left;
+    background: #430493; 
+}
+.side-menu li{
+    padding: 20px;
+}
+.side-menu li a{
+    color:#fff;
+    text-decoration: none;
+}
