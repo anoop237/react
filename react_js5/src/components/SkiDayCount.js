@@ -22,6 +22,7 @@ export const SkiDayCount = createReactClass({
     render(){
         return(
         <div className="ski-day-count">
+            <h1>SkiDays Count</h1>
             <div  className="total-days">
                 <span>{this.props.total}</span><Calendar/><span> Days</span>
             </div>

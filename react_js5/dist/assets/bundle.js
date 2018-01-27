@@ -3738,7 +3738,7 @@ var _App = __webpack_require__(91);
 
 var _App2 = _interopRequireDefault(_App);
 
-var _Whoops = __webpack_require__(100);
+var _Whoops = __webpack_require__(101);
 
 var _propTypes = __webpack_require__(2);
 
@@ -3751,6 +3751,8 @@ window.React = _react2.default;
         _reactRouter.Router,
         { history: _reactRouter.hashHistory },
         _react2.default.createElement(_reactRouter.Route, { path: '/', component: _App2.default }),
+        _react2.default.createElement(_reactRouter.Route, { path: 'list-days', component: _App2.default }),
+        _react2.default.createElement(_reactRouter.Route, { path: 'add-day', component: _App2.default }),
         _react2.default.createElement(_reactRouter.Route, { path: '*', component: _Whoops.Whoops404 })
 ), document.getElementById('root'));
 
@@ -24840,6 +24842,8 @@ var _SkiDayList2 = _interopRequireDefault(_SkiDayList);
 
 var _SkiDayCount = __webpack_require__(98);
 
+var _AddDayForm = __webpack_require__(100);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -24875,8 +24879,8 @@ var App = function (_React$Component) {
             return _react2.default.createElement(
                 'div',
                 null,
-                _react2.default.createElement(_SkiDayCount.SkiDayCount, { total: this.countDays(), powder: this.countDays('powder'), backcountry: this.countDays('backcountry') }),
-                _react2.default.createElement(_SkiDayList2.default, { days: this.state.allSkiDays })
+                //
+                this.props.location.pathname === "/" ? _react2.default.createElement(_SkiDayCount.SkiDayCount, { total: this.countDays(), powder: this.countDays('powder'), backcountry: this.countDays('backcountry') }) : this.props.location.pathname === "/add-day" ? _react2.default.createElement(_AddDayForm.AddDayForm, null) : _react2.default.createElement(_SkiDayList2.default, { days: this.state.allSkiDays })
             );
         }
     }]);
@@ -24934,42 +24938,51 @@ var SkiDayList = function (_React$Component) {
         key: 'render',
         value: function render() {
             return _react2.default.createElement(
-                'table',
+                'div',
                 null,
                 _react2.default.createElement(
-                    'thead',
+                    'h1',
                     null,
-                    _react2.default.createElement(
-                        'tr',
-                        null,
-                        _react2.default.createElement(
-                            'th',
-                            null,
-                            'Date'
-                        ),
-                        _react2.default.createElement(
-                            'th',
-                            null,
-                            'Resort'
-                        ),
-                        _react2.default.createElement(
-                            'th',
-                            null,
-                            'Powder Day'
-                        ),
-                        _react2.default.createElement(
-                            'th',
-                            null,
-                            'BackCountry Day'
-                        )
-                    )
+                    'SkiDays List'
                 ),
                 _react2.default.createElement(
-                    'tbody',
-                    null,
-                    this.props.days.map(function (data, index) {
-                        return _react2.default.createElement(_SkiDayRow2.default, { key: index, date: data.date, resort: data.resort, powder: data.powder, backcountry: data.backcountry });
-                    })
+                    'table',
+                    { className: 'table' },
+                    _react2.default.createElement(
+                        'thead',
+                        null,
+                        _react2.default.createElement(
+                            'tr',
+                            null,
+                            _react2.default.createElement(
+                                'th',
+                                { className: 'table-data' },
+                                'Date'
+                            ),
+                            _react2.default.createElement(
+                                'th',
+                                { className: 'table-data' },
+                                'Resort'
+                            ),
+                            _react2.default.createElement(
+                                'th',
+                                { className: 'table-data' },
+                                'Powder Day'
+                            ),
+                            _react2.default.createElement(
+                                'th',
+                                { className: 'table-data' },
+                                'BackCountry Day'
+                            )
+                        )
+                    ),
+                    _react2.default.createElement(
+                        'tbody',
+                        null,
+                        this.props.days.map(function (data, index) {
+                            return _react2.default.createElement(_SkiDayRow2.default, { key: index, date: data.date, resort: data.resort, powder: data.powder, backcountry: data.backcountry });
+                        })
+                    )
                 )
             );
         }
@@ -25002,7 +25015,7 @@ exports = module.exports = __webpack_require__(94)(false);
 
 
 // module
-exports.push([module.i, ".ski-day-count {\n  padding: 50px; }\n\n.total-days {\n  font-size: 30px;\n  color: #000222;\n  margin: 15px auto 50px;\n  text-align: center; }\n\n.powder-days {\n  font-size: 30px;\n  color: #000222;\n  float: left; }\n\n.backcountry-days {\n  font-size: 30px;\n  color: #000222;\n  float: right; }\n\n.goal-days {\n  text-align: center;\n  font-size: 30px;\n  padding: 75px; }\n", ""]);
+exports.push([module.i, ".ski-day-count {\n  padding: 50px; }\n\n.total-days {\n  font-size: 30px;\n  color: #000222;\n  margin: 15px auto 50px;\n  text-align: center; }\n\n.powder-days {\n  font-size: 30px;\n  color: #000222;\n  float: left; }\n\n.backcountry-days {\n  font-size: 30px;\n  color: #000222;\n  float: right; }\n\n.goal-days {\n  text-align: center;\n  font-size: 30px;\n  padding: 75px; }\n\n.table {\n  margin: 15px auto 50px;\n  border: 1px solid #000;\n  border-collapse: collapse; }\n\n.table-data {\n  font-size: 30px;\n  padding: 5px 10px;\n  border: 1px solid #000; }\n", ""]);
 
 // exports
 
@@ -25611,23 +25624,23 @@ var SkiDayRow = function (_React$Component) {
                 'tr',
                 null,
                 _react2.default.createElement(
-                    'th',
-                    null,
+                    'td',
+                    { className: 'table-data' },
                     this.props.date.getMonth() + 1 + '/' + this.props.date.getDate() + '/' + this.props.date.getFullYear()
                 ),
                 _react2.default.createElement(
-                    'th',
-                    null,
+                    'td',
+                    { className: 'table-data' },
                     this.props.resort
                 ),
                 _react2.default.createElement(
-                    'th',
-                    null,
+                    'td',
+                    { className: 'table-data' },
                     this.props.powder ? _react2.default.createElement(_weatherSnow2.default, null) : null
                 ),
                 _react2.default.createElement(
-                    'th',
-                    null,
+                    'td',
+                    { className: 'table-data' },
                     this.props.backcountry ? _react2.default.createElement(_terrain2.default, null) : null
                 )
             );
@@ -25701,6 +25714,11 @@ var SkiDayCount = exports.SkiDayCount = createReactClass({
         return _react2.default.createElement(
             'div',
             { className: 'ski-day-count' },
+            _react2.default.createElement(
+                'h1',
+                null,
+                'SkiDays Count'
+            ),
             _react2.default.createElement(
                 'div',
                 { className: 'total-days' },
@@ -25811,6 +25829,28 @@ module.exports = exports['default'];
 
 /***/ }),
 /* 100 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+var AddDayForm = exports.AddDayForm = function AddDayForm() {
+    return React.createElement(
+        "div",
+        null,
+        React.createElement(
+            "h1",
+            null,
+            "Add Day form."
+        )
+    );
+};
+
+/***/ }),
+/* 101 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";

@@ -7,10 +7,10 @@ export default class SkiDayRow extends React.Component {
     render(){
         return(
                 <tr>
-                    <th>{(this.props.date.getMonth()+1)+'/'+this.props.date.getDate()+'/'+this.props.date.getFullYear()}</th>
-                    <th>{this.props.resort}</th>
-                    <th>{this.props.powder?<SnowFlake/>:null}</th>
-                    <th>{this.props.backcountry?<Terrain/>:null}</th>
+                    <td className='table-data'>{(this.props.date.getMonth()+1)+'/'+this.props.date.getDate()+'/'+this.props.date.getFullYear()}</td>
+                    <td className='table-data'>{this.props.resort}</td>
+                    <td className='table-data'>{this.props.powder?<SnowFlake/>:null}</td>
+                    <td className='table-data'>{this.props.backcountry?<Terrain/>:null}</td>
                 </tr>
            );
     }

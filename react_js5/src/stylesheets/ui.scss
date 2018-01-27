@@ -28,3 +28,13 @@ $center: center;
     font-size:$font;
     padding : 75px;
 }
+.table{
+    margin:$margin;
+    border: 1px solid #000;
+    border-collapse: collapse
+}
+.table-data{
+    font-size : 30px;
+    padding: 5px 10px;
+    border: 1px solid #000;
+}

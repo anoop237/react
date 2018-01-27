@@ -5,13 +5,13 @@ import SkiDayRow from './SkiDayRow.js'
 export default class SkiDayList extends React.Component {
     render(){
         return(
-        <table>
+        <div><h1>SkiDays List</h1><table className="table">
             <thead>
                 <tr>
-                    <th>Date</th>
-                    <th>Resort</th>
-                    <th>Powder Day</th>
-                    <th>BackCountry Day</th>
+                    <th className='table-data'>Date</th>
+                    <th className='table-data'>Resort</th>
+                    <th className='table-data'>Powder Day</th>
+                    <th className='table-data'>BackCountry Day</th>
                 </tr>
             </thead>
             <tbody>
@@ -20,7 +20,7 @@ export default class SkiDayList extends React.Component {
                 })
               }
             </tbody>
-        </table>);
+        </table></div>);
     }
 }
 SkiDayList.propTypes = {
