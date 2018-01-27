@@ -20,8 +20,8 @@ export default class App extends React.Component{
     render(){
         return (
         <div>
-               {//
-                (this.props.location.pathname==="/")?<SkiDayCount total={this.countDays()} powder={this.countDays('powder')} backcountry={this.countDays('backcountry')} />
+               {
+                (this.props.location.pathname==="/day-count")?<SkiDayCount total={this.countDays()} powder={this.countDays('powder')} backcountry={this.countDays('backcountry')} />
                :((this.props.location.pathname==="/add-day")?<AddDayForm/> :<SkiDayList days={this.state.allSkiDays}/>)
                }
               
