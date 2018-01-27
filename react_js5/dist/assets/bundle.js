@@ -25017,7 +25017,7 @@ exports = module.exports = __webpack_require__(94)(false);
 
 
 // module
-exports.push([module.i, ".ski-day-count {\n  padding: 50px; }\n\n.total-days {\n  font-size: 30px;\n  color: #000222;\n  margin: 15px auto 50px;\n  text-align: center; }\n\n.powder-days {\n  font-size: 30px;\n  color: #000222;\n  float: left; }\n\n.backcountry-days {\n  font-size: 30px;\n  color: #000222;\n  float: right; }\n\n.goal-days {\n  text-align: center;\n  font-size: 30px;\n  padding: 75px; }\n\n.table {\n  margin: 15px auto 50px;\n  border: 1px solid #000;\n  border-collapse: collapse; }\n\n.table-data {\n  font-size: 30px;\n  padding: 5px 10px;\n  border: 1px solid #000; }\n\n.menu {\n  list-style-type: none;\n  margin: 40px;\n  padding: 10px;\n  font-size: 18px; }\n\n.menu li a {\n  text-decoration: none; }\n", ""]);
+exports.push([module.i, ".ski-day-count {\n  padding: 50px; }\n\n.total-days {\n  font-size: 30px;\n  color: #000222;\n  margin: 15px auto 50px;\n  text-align: center; }\n\n.powder-days {\n  font-size: 30px;\n  color: #000222;\n  float: left; }\n\n.backcountry-days {\n  font-size: 30px;\n  color: #000222;\n  float: right; }\n\n.goal-days {\n  text-align: center;\n  font-size: 30px;\n  padding: 75px; }\n\n.table {\n  margin: 15px auto 50px;\n  border: 1px solid #000;\n  border-collapse: collapse; }\n\n.table-data {\n  font-size: 30px;\n  padding: 5px 10px;\n  border: 1px solid #000;\n  text-align: center; }\n\n.menu {\n  list-style-type: none;\n  margin: 40px;\n  padding: 10px;\n  font-size: 18px; }\n\n.menu li a {\n  text-decoration: none; }\n", ""]);
 
 // exports
 
