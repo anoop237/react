@@ -2,17 +2,17 @@ import React from 'react'
 import {MainMenu} from './MainMenu'
 export default class Home extends React.Component{     
     componentDidMount() {
-         $('.carousel.carousel-slider').carousel({fullWidth: true});
+         $('.carousel').carousel({fullWidth:true,duration:100});
     }
     render(){
         return(<div>
             <div>
                 <div><MainMenu/></div>
-                <div className="carousel carousel-slider" data-ndicators="true">
-                    <a className="carousel-item" href="#one!"><img src="assets/images/image1.jpg"/></a>
-                    <a className="carousel-item" href="#two!"><img src="assets/images/image2.jpg"/></a>
-                    <a className="carousel-item" href="#three!"><img src="assets/images/image3.jpg"/></a>
-                    <a className="carousel-item" href="#four!"><img src="assets/images/image4.jpg"/></a>
+                <div className="carousel carousel-slider" data-indicators="true">
+                    <div className="carousel-item"><img src="assets/images/image1.jpg"/></div>
+                    <div className="carousel-item"><img src="assets/images/image2.jpg"/></div>
+                    <div className="carousel-item"><img src="assets/images/image3.jpg"/></div>
+                    <div className="carousel-item"><img src="assets/images/image4.jpg"/></div>
                 </div>
             </div>
         </div>)
