@@ -1,10 +1,15 @@
 import React from 'react'
+import {Footer} from './Footer'
 export const About = ()=>
-        <div className="row">
-            <h5 className="col s12">About Us</h5>
-            <div className="row">
-                <div className="col s4 m2">
+        <div>
+            <div className="center-align">
+                <h4>Director's <span className="red-text text-darken-4">Message</span></h4>
+                <div className="title-line"></div>
+            </div>
+            <div className="row about">
+                <div className="col s4 m2 about_img">
                     <img className="responsive-img" src="assets/images/anoop.jpg"/>
+                    <div className="center-align">Er. Anoop Kumar</div>
                 </div>
                 <div className="col s8 m10">
                     <p className="col s12 paragraph">
@@ -29,4 +34,5 @@ export const About = ()=>
                     </p>
                 </div>
             </div>
+            <Footer/>
         </div>
