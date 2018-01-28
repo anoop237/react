@@ -1,7 +1,7 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import './stylesheet/ui.scss'
-import {Home} from './components/Home'
+import Home from './components/Home'
 import {Left,Whoops404,Right} from './components/Whoops404'
 import {About} from './components/About'
 import {MemberList} from './components/MemberList'

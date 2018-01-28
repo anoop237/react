@@ -9,5 +9,5 @@ export const Right = ({children})=><div className="page">
             {children}
         </div>
 export const Whoops404 = ()=><div className="page">
-            <h1>Whoops....404 Page not found...</h1>
+            <h5>Whoops....404 Page not found...</h5>
         </div>

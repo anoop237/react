@@ -1,33 +1,49 @@
-body{
-    margin :0;
-    box-sizing: border-box;
-}
-.about{
-    padding: 20px;
-}
-.top-menu{
-    list-style-type: none;
-    width: 100%;
-    background: #430493; 
-}
-.top-menu li{
-    float: left;
-    padding: 20px;
-}
-.top-menu li a{
-    color:#fff;
-    text-decoration: none;
-}
-.side-menu{
-    list-style-type: none;
-    height: 100%;
-    float: left;
-    background: #430493; 
-}
-.side-menu li{
-    padding: 20px;
-}
-.side-menu li a{
-    color:#fff;
-    text-decoration: none;
+@charset "UTF-8";
+
+// Colors
+@import "./components/color";
+
+// Variables;
+@import "./components/variables";
+
+// Reset
+@import "./components/normalize";
+
+// components
+@import "./components/global";
+@import "./components/badges";
+@import "./components/icons-material-design";
+@import "./components/grid";
+@import "./components/navbar";
+@import "./components/typography";
+@import "./components/transitions";
+@import "./components/cards";
+@import "./components/toast";
+@import "./components/tabs";
+@import "./components/tooltip";
+@import "./components/buttons";
+@import "./components/dropdown";
+@import "./components/waves";
+@import "./components/modal";
+@import "./components/collapsible";
+@import "./components/chips";
+@import "./components/materialbox";
+@import "./components/forms/forms";
+@import "./components/table_of_contents";
+@import "./components/sideNav";
+@import "./components/preloader";
+@import "./components/slider";
+@import "./components/carousel";
+@import "./components/tapTarget";
+@import "./components/pulse";
+@import "./components/date_picker/default";
+@import "./components/date_picker/default.date";
+@import "./components/date_picker/default.time";
+
+ .navbar {
+     @extend .red, .darken-4;
+  }
+.paragraph{
+    margin-top:0;
+    text-align: justify;
 }
