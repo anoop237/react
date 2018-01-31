@@ -39,7 +39,6 @@
 @import "./components/date_picker/default";
 @import "./components/date_picker/default.date";
 @import "./components/date_picker/default.time";
-
  .navbar {
      @extend .red, .darken-4;
   }
@@ -186,14 +185,14 @@
     width: 100%;
 }
 .team-img-1 {
-    background-image: url(http://localhost:3000/assets/images/anoop.jpg);
+    background-image: url(/assets/images/anoop.jpg);
 }
 .team-img-2 {
-    background-image: url(http://localhost:3000/assets/images/team-member2.jpg);
+    background-image: url(/assets/images/team-member2.jpg);
 }
 .team-img-3 {
-    background-image: url(http://localhost:3000/assets/images/team-member3.jpg);
+    background-image: url(/assets/images/team-member3.jpg);
 }
 .team-img-4 {
-    background-image: url(http://localhost:3000/assets/images/team-member4.jpg);
+    background-image: url(/assets/images/team-member4.jpg);
 }
