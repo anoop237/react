@@ -8,6 +8,8 @@ import {MemberList} from './components/MemberList'
 import {Gallery} from './components/Gallery'
 import Chart from './components/Chart'
 import {Router,Route,hashHistory} from 'react-router'
+
+
 export const routes = (
                     <Router history={hashHistory}>
                         <Route path="/" component={Home}></Route>

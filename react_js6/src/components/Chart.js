@@ -1,16 +1,35 @@
 import React from 'react'
+import ReactDOM from 'react-dom'
 import MainMenu from './MainMenu'
 //import Highcharts from 'highcharts'
 import {Footer} from './Footer'
 export default class Chart extends React.Component{     
     constructor(props){
       super(props);
-      this.state={symbol:'MSFT',chart_type:'candlestick'};
+
+
+      var list=[
+            {company:"Apple",symbol:"AAPL"},
+            {company:"Microsoft",symbol:"MSFT"},
+            {company:"Comcast",symbol:"CMCSA"},
+            {company:"Intel",symbol:"INTC"},
+            {company:"Cisco Systems",symbol:"CSCO"},
+            {company:"Sirius Xm Radio Inc.",symbol:"SIRI"},
+            {company:"EBAY Inc.",symbol:"EBAY"},
+            {company:"Nvidia",symbol:"NVDA"},
+            {company:"Applied Materials",symbol:"AMAT"},
+            {company:"Starbucks",symbol:"SBUX"},
+            {company:"Huntington Bancshares",symbol:"HBAN"},
+            {company:"Healthcare Services",symbol:"HCSG"},
+        ];
+      this.state={symbol:'MSFT',chart_type:'candlestick',list:list}
       this.handleChange = this.handleChange.bind(this);
+      this.searchItem = this.searchItem.bind(this);
+      this.setItem = this.setItem.bind(this);
      }
     
-      loadgraph(){  
-        fetch('https://www.alphavantage.co/query?function=TIME_SERIES_DAILY&symbol=MSFT&apikey=C9LLKPCQEMW4DVLR&outputsize=compact').then(results=>{
+    loadgraph(){  
+        fetch('https://www.alphavantage.co/query?function=TIME_SERIES_DAILY&symbol='+this.state.symbol+'&apikey=C9LLKPCQEMW4DVLR&outputsize=compact').then(results=>{
             return results.json();
          }).then(data=>{
             var stock_data = data['Time Series (Daily)'];
@@ -78,24 +97,50 @@ export default class Chart extends React.Component{
                      }]
             }
 
-            // create the chart
-        Highcharts.stockChart('container', {
-            
-            rangeSelector: {selected: 1},
-
-            title: {text: this.state.symbol+' Stock Price'},
-            series: series
+        // create the chart
+            Highcharts.stockChart('container', {
+                rangeSelector: {selected: 1},
+                title: {text: this.state.symbol+' Stock Price'},
+                series: series
+            });
         });
-    });
-  }
-handleChange(event) {
-    this.setState({chart_type: event.target.value});
-    //this.componentDidUpdate();
-  }
-handleSearch(event) {
-    this.setState({symbol: event.target.value});
-    //this.componentDidUpdate();
-  }
+    }
+    handleChange(event) {
+        this.setState({chart_type: event.target.value});
+        //this.componentDidUpdate();
+    }
+    searchItem(){
+        var data = this.state.list;
+        var pattern = ReactDOM.findDOMNode(this.refs.filter).value.trim().toLowerCase(); 
+        if(pattern!='')
+        {
+            for (var i = 0; i < data.length; i++) {
+                var bar = new RegExp(pattern);
+                if (bar.test(data[i].company.toLowerCase())) 
+                {
+                    document.getElementById(i).style.display='block';
+                }
+               
+                else{
+                    document.getElementById(i).style.display='none';
+                }
+            }     
+        }
+        else
+        {
+            
+            var input = document.getElementsByTagName("li");
+            var inputList = Array.prototype.slice.call(input);
+            inputList.forEach(function(value,index)                                 {
+                    value.style.display='block';
+            });
+        }
+    }
+    setItem(symbol){
+        this.setState({
+            symbol:symbol
+        });
+    }
     render(){
         {this.loadgraph()}
         return(
@@ -103,21 +148,31 @@ handleSearch(event) {
                 <div className="container">
                     <div className="row"><h4>Highchart Stock {this.state.symbol}</h4></div>
                     <div className="row">
-                        <label className="col s2 label">Select Chart Type</label>
-                        <div className="col s3">
+                        <label className="col m2 s5 label">Select Chart Type</label>
+                        <div className="col m3 s6">
                             <select className="browser-default select_field" defaultValue={this.state.chart_type} onChange={this.handleChange}>
                                 <option value="candlestick">Candlestick</option>
                                 <option value="ohlc">OHLC</option>
                                 <option value="marker-only">Marker Only</option>
                             </select>
                         </div>
-                        <div className="col s2"></div>
-                        <div className="browser-default inline col s5">
-                            <input  type="text" placeholder="Search Company or Symbol"/>
+                        <div className="col m2 s1"></div>
+                        <div className="browser-default inline col m5 s12">
+                            <input className="nm" type="text" placeholder="Search Company or Symbol" ref="filter" onChange={()=>this.searchItem()}/>
+                            <div>
+                                <ul className="suggestion-list nm hide" id="suggestion-list">
+                                    {
+                                        this.state.list.map(function(data,index){
+                                             return <li key={index} id={index} data-symbol={data.symbol} onClick={()=>this.setItem(data.symbol)}>{data.company +' : '+data.symbol}</li>
+                                    },this)
+                                    } 
+                                </ul>
+
+                            </div>
                         </div>
 
                     </div>
-                    <div id="container"></div>
+                    <div id="container" className="chart-container"></div>
                 </div>
                 <Footer/>
             </div>
