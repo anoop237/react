@@ -137,6 +137,7 @@ export default class Chart extends React.Component{
         }
     }
     setItem(symbol){
+        ReactDOM.findDOMNode(this.refs.filter).value=symbol;
         this.setState({
             symbol:symbol
         });
@@ -160,7 +161,7 @@ export default class Chart extends React.Component{
                         <div className="browser-default inline col m5 s12">
                             <input className="nm" type="text" placeholder="Search Company or Symbol" ref="filter" onChange={()=>this.searchItem()}/>
                             <div>
-                                <ul className="suggestion-list nm hide" id="suggestion-list">
+                                <ul className="suggestion-list nm" id="suggestion-list">
                                     {
                                         this.state.list.map(function(data,index){
                                              return <li key={index} id={index} data-symbol={data.symbol} onClick={()=>this.setItem(data.symbol)}>{data.company +' : '+data.symbol}</li>
