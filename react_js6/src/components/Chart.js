@@ -1,7 +1,7 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import MainMenu from './MainMenu'
-//import Highcharts from 'highcharts'
+import Highcharts from 'highcharts/highstock'
 import {Footer} from './Footer'
 export default class Chart extends React.Component{     
     constructor(props){
