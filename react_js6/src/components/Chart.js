@@ -6,9 +6,7 @@ import {Footer} from './Footer'
 export default class Chart extends React.Component{     
     constructor(props){
       super(props);
-
-
-      var list=[
+      const list=[
             {company:"Apple",symbol:"AAPL"},
             {company:"Microsoft",symbol:"MSFT"},
             {company:"Comcast",symbol:"CMCSA"},
