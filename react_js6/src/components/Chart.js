@@ -26,6 +26,8 @@ export default class Chart extends React.Component{
       this.handleChange = this.handleChange.bind(this);
       this.searchItem = this.searchItem.bind(this);
       this.setItem = this.setItem.bind(this);
+      this.showList = this.showList.bind(this);
+      this.hideList = this.hideList.bind(this);
      }
     
     loadgraph(){  
@@ -36,11 +38,8 @@ export default class Chart extends React.Component{
             console.log(stock_data);
             var output_data=[];
             const new_data = Object.keys(stock_data).map(function(key,index){
-                var myDate= key;
-                myDate=myDate.split("-");
-                var newDate=myDate[1]+"/"+myDate[2]+"/"+myDate[0];
-                var timestamp = new Date(newDate).getTime();
-                var record = [timestamp,parseFloat(stock_data[key]['1. open']),parseFloat(stock_data[key]['2. high']),parseFloat(stock_data[key]['3. low']),parseFloat(stock_data[key]['4. close']),parseFloat(stock_data[key]['5. volume'])];
+                var timestamp = new Date(key).getTime();
+                var record = [timestamp,parseFloat(stock_data[key]['1. open']),parseFloat(stock_data[key]['2. high']),parseFloat(stock_data[key]['3. low']),parseFloat(stock_data[key]['4. close'])];
                 output_data.push(record);
             });
             output_data.reverse();
@@ -114,13 +113,12 @@ export default class Chart extends React.Component{
         var pattern = ReactDOM.findDOMNode(this.refs.filter).value.trim().toLowerCase(); 
         if(pattern!='')
         {
+            document.getElementById('suggestion-list').style.display='block';
             for (var i = 0; i < data.length; i++) {
                 var bar = new RegExp(pattern);
-                if (bar.test(data[i].company.toLowerCase())) 
-                {
+                if (bar.test(data[i].company.toLowerCase()) || bar.test(data[i].symbol.toLowerCase())){
                     document.getElementById(i).style.display='block';
                 }
-               
                 else{
                     document.getElementById(i).style.display='none';
                 }
@@ -128,7 +126,7 @@ export default class Chart extends React.Component{
         }
         else
         {
-            
+            document.getElementById('suggestion-list').style.display='none'; 
             var input = document.getElementsByTagName("li");
             var inputList = Array.prototype.slice.call(input);
             inputList.forEach(function(value,index)                                 {
@@ -136,42 +134,50 @@ export default class Chart extends React.Component{
             });
         }
     }
+    showList(symbol){
+       // document.getElementById('suggestion-list').style.display='block';
+    }
+    hideList(symbol){
+        //document.getElementById('suggestion-list').style.display='none';
+    }
     setItem(symbol){
         ReactDOM.findDOMNode(this.refs.filter).value=symbol;
         this.setState({
             symbol:symbol
         });
+        document.getElementById('suggestion-list').style.display='none';
     }
     render(){
         {this.loadgraph()}
         return(
             <div>
                 <div className="container">
-                    <div className="row"><h4>Highchart Stock {this.state.symbol}</h4></div>
+                    <div className="row"><h4>HighStock {this.state.symbol}</h4></div>
                     <div className="row">
-                        <label className="col m2 s5 label">Select Chart Type</label>
-                        <div className="col m3 s6">
-                            <select className="browser-default select_field" defaultValue={this.state.chart_type} onChange={this.handleChange}>
-                                <option value="candlestick">Candlestick</option>
-                                <option value="ohlc">OHLC</option>
-                                <option value="marker-only">Marker Only</option>
-                            </select>
-                        </div>
-                        <div className="col m2 s1"></div>
-                        <div className="browser-default inline col m5 s12">
-                            <input className="nm" type="text" placeholder="Search Company or Symbol" ref="filter" onChange={()=>this.searchItem()}/>
-                            <div>
-                                <ul className="suggestion-list nm" id="suggestion-list">
-                                    {
-                                        this.state.list.map(function(data,index){
-                                             return <li key={index} id={index} data-symbol={data.symbol} onClick={()=>this.setItem(data.symbol)}>{data.company +' : '+data.symbol}</li>
-                                    },this)
-                                    } 
-                                </ul>
-
+                        <div className="col m6 s12">
+                            <label className="col m4 s12 label">Select Chart</label>
+                            <div className="col m8 s12 np">
+                                <select className="browser-default select_field" defaultValue={this.state.chart_type} onChange={this.handleChange}>
+                                    <option value="candlestick">Candlestick</option>
+                                    <option value="ohlc">OHLC</option>
+                                    <option value="marker-only">Marker Only</option>
+                                </select>
                             </div>
                         </div>
-
+                        <div className="browser-default inline col m2 s12"></div>
+                        <div className="browser-default inline col m4 s12">
+                            <div>
+                                <input className="search" id="search" type="text" placeholder="Search Company or Symbol" ref="filter" onChange={()=>this.searchItem()}/>
+                                <i className="material-icons search-icon">search</i>
+                            </div>
+                            <ul className="suggestion-list nm" id="suggestion-list">
+                                {
+                                    this.state.list.map(function(data,index){
+                                            return <li key={index} id={index} data-symbol={data.symbol} onClick={()=>this.setItem(data.symbol)}>{data.company +' : '+data.symbol}</li>
+                                     },this)
+                                } 
+                            </ul>
+                        </div>
                     </div>
                     <div id="container" className="chart-container"></div>
                 </div>
