@@ -21,13 +21,18 @@ export default class Chart extends React.Component{
             {company:"Starbucks",symbol:"SBUX"},
             {company:"Huntington Bancshares",symbol:"HBAN"},
             {company:"Healthcare Services",symbol:"HCSG"},
+            {company:"Liberty Global",symbol:"LBTYK"},
+            {company:"Amazon.com",symbol:"AMZN"},
+            {company:"Qualcomm Incorporated",symbol:"QCOM"},
+            {company:"Marvell",symbol:"MRVL"},
+            {company:"Google Inc.",symbol:"GOOG"},
+            {company:"Seagate Technology",symbol:"STX"},
+            {company:"Cognizant Technology Solutions",symbol:"CTSH"}
         ];
-      this.state={symbol:'MSFT',chart_type:'candlestick',list:list}
+      this.state={company:'Microsoft',symbol:'MSFT',chart_type:'candlestick',list:list}
       this.handleChange = this.handleChange.bind(this);
       this.searchItem = this.searchItem.bind(this);
       this.setItem = this.setItem.bind(this);
-      this.showList = this.showList.bind(this);
-      this.hideList = this.hideList.bind(this);
      }
     
     loadgraph(){  
@@ -134,16 +139,11 @@ export default class Chart extends React.Component{
             });
         }
     }
-    showList(symbol){
-       // document.getElementById('suggestion-list').style.display='block';
-    }
-    hideList(symbol){
-        //document.getElementById('suggestion-list').style.display='none';
-    }
-    setItem(symbol){
+    setItem(company,symbol){
         ReactDOM.findDOMNode(this.refs.filter).value=symbol;
         this.setState({
-            symbol:symbol
+            symbol:symbol,
+            company:company
         });
         document.getElementById('suggestion-list').style.display='none';
     }
@@ -152,7 +152,7 @@ export default class Chart extends React.Component{
         return(
             <div>
                 <div className="container">
-                    <div className="row"><h4>HighStock {this.state.symbol}</h4></div>
+                    <div className="row"><h4>HighStock {this.state.company}</h4></div>
                     <div className="row">
                         <div className="col m6 s12">
                             <label className="col m4 s12 label">Select Chart</label>
@@ -170,10 +170,10 @@ export default class Chart extends React.Component{
                                 <input className="search" id="search" type="text" placeholder="Search Company or Symbol" ref="filter" onChange={()=>this.searchItem()}/>
                                 <i className="material-icons search-icon">search</i>
                             </div>
-                            <ul className="suggestion-list nm" id="suggestion-list">
+                            <ul className="suggestion-list nm col m3 s10" id="suggestion-list">
                                 {
                                     this.state.list.map(function(data,index){
-                                            return <li key={index} id={index} data-symbol={data.symbol} onClick={()=>this.setItem(data.symbol)}>{data.company +' : '+data.symbol}</li>
+                                            return <li key={index} id={index} data-company={data.company} data-symbol={data.symbol} onClick={()=>this.setItem(data.company,data.symbol)}>{data.company +' : '+data.symbol}</li>
                                      },this)
                                 } 
                             </ul>

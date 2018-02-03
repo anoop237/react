@@ -21,14 +21,14 @@ export default class MainMenu extends React.Component{
                         <li><Link to = "/about">About</Link></li>
                         <li><Link to = "/member-list">Members</Link></li>
                         <li><Link to = "/gallery">Gallery</Link></li>
-                        <li><Link to = "/chart">Chart</Link></li>
+                        <li><Link to = "/chart">StockChart</Link></li>
                     </ul>
                     <ul id="nav-mobile" className="right hide-on-med-and-down">
                         <li><Link to = "/">Home</Link></li>
                         <li><Link to = "/about">About</Link></li>
                         <li><Link to = "/member-list">Members</Link></li>
                         <li><Link to = "/gallery">Gallery</Link></li>
-                        <li><Link to = "/chart">Chart</Link></li>
+                        <li><Link to = "/chart">StockChart</Link></li>
                     </ul>
                     <a href="#" data-activates="slide-out" className="button-collapse"><i className="material-icons">menu</i></a>
                 </div>
