@@ -5,6 +5,7 @@ import Terrain from 'react-icons/lib/md/terrain'
 import SnowFlake from 'react-icons/lib/ti/weather-snow'
 export default class SkiDayRow extends React.Component {
     render(){
+       
         return(
                 <tr>
                     <td className='table-data'>{(this.props.date.getMonth()+1)+'/'+this.props.date.getDate()+'/'+this.props.date.getFullYear()}</td>

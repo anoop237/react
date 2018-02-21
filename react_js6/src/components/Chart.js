@@ -34,7 +34,7 @@ export default class Chart extends React.Component{
      }
     
     loadgraph(){  
-        fetch('https://www.alphavantage.co/query?function=TIME_SERIES_DAILY&symbol='+this.state.symbol+'&apikey=C9LLKPCQEMW4DVLR&outputsize=full').then(results=>{
+        fetch('https://www.alphavantage.co/query?function=TIME_SERIES_DAILY&symbol='+this.state.symbol+'&apikey=C9LLKPCQEMW4DVLR&outputsize=compact').then(results=>{
             return results.json();
          }).then(data=>{
             var stock_data = data['Time Series (Daily)'];
