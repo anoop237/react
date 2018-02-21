@@ -8,7 +8,7 @@ export default class SkiDayRow extends React.Component {
        
         return(
                 <tr>
-                    <td className='table-data'>{(this.props.date.getMonth()+1)+'/'+this.props.date.getDate()+'/'+this.props.date.getFullYear()}</td>
+                    <td className='table-data'>{this.props.date}</td>
                     <td className='table-data'>{this.props.resort}</td>
                     <td className='table-data'>{this.props.powder?<SnowFlake/>:null}</td>
                     <td className='table-data'>{this.props.backcountry?<Terrain/>:null}</td>
@@ -17,7 +17,7 @@ export default class SkiDayRow extends React.Component {
     }
 }
 SkiDayRow.propTypes = {
-    date: PropTypes.object,
+    date: PropTypes.string,
     resort: PropTypes.string,
     powder: PropTypes.bool,
     backcountry :PropTypes.bool

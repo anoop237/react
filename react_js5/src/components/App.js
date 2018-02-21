@@ -9,11 +9,16 @@ export default class App extends React.Component{
         super();
         this.state = {
                     allSkiDays:[
-                                {resort:'Squwa Valley',date:new Date('01/02/2016'),powder:true,backcountry:false},
-                                {resort:'Kirkwood',date:new Date('02/03/2016'),powder:false,backcountry:false},
-                                {resort:'Mt. Tallac',date:new Date('04/14/2016'),powder:false,backcountry:true}
+                                {resort:'Squwa Valley',date:'2016-09-11',powder:true,backcountry:false},
+                                
                                 ]
                     };
+        this.addDay=this.addDay.bind(this);
+    }
+    addDay(newDay){
+        this.setState({
+            allSkiDays:[...this.state.allSkiDays,newDay]
+        });
     }
     countDays(filter){
         return this.state.allSkiDays.filter((day)=>filter?day[filter]:day).length;
@@ -23,10 +28,9 @@ export default class App extends React.Component{
         <div>
                {
                 (this.props.location.pathname==="/")?<SkiDayCount total={this.countDays()} powder={this.countDays('powder')} backcountry={this.countDays('backcountry')} />
-               :((this.props.location.pathname==="/add-day")?<AddDayForm/> :<SkiDayList days={this.state.allSkiDays} filter={this.props.params.filter}/>)
+               :((this.props.location.pathname==="/add-day")?<AddDayForm onNewDay={this.addDay}/> :<SkiDayList days={this.state.allSkiDays} filter={this.props.params.filter}/>)
                }
               <Menu/>
         </div>)
     }
-
 }

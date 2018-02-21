@@ -24852,6 +24852,8 @@ var _Menu = __webpack_require__(101);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
+
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
@@ -24867,12 +24869,20 @@ var App = function (_React$Component) {
         var _this = _possibleConstructorReturn(this, (App.__proto__ || Object.getPrototypeOf(App)).call(this));
 
         _this.state = {
-            allSkiDays: [{ resort: 'Squwa Valley', date: new Date('01/02/2016'), powder: true, backcountry: false }, { resort: 'Kirkwood', date: new Date('02/03/2016'), powder: false, backcountry: false }, { resort: 'Mt. Tallac', date: new Date('04/14/2016'), powder: false, backcountry: true }]
+            allSkiDays: [{ resort: 'Squwa Valley', date: '2016-09-11', powder: true, backcountry: false }]
         };
+        _this.addDay = _this.addDay.bind(_this);
         return _this;
     }
 
     _createClass(App, [{
+        key: 'addDay',
+        value: function addDay(newDay) {
+            this.setState({
+                allSkiDays: [].concat(_toConsumableArray(this.state.allSkiDays), [newDay])
+            });
+        }
+    }, {
         key: 'countDays',
         value: function countDays(filter) {
             return this.state.allSkiDays.filter(function (day) {
@@ -24885,7 +24895,7 @@ var App = function (_React$Component) {
             return _react2.default.createElement(
                 'div',
                 null,
-                this.props.location.pathname === "/" ? _react2.default.createElement(_SkiDayCount.SkiDayCount, { total: this.countDays(), powder: this.countDays('powder'), backcountry: this.countDays('backcountry') }) : this.props.location.pathname === "/add-day" ? _react2.default.createElement(_AddDayForm.AddDayForm, null) : _react2.default.createElement(_SkiDayList2.default, { days: this.state.allSkiDays, filter: this.props.params.filter }),
+                this.props.location.pathname === "/" ? _react2.default.createElement(_SkiDayCount.SkiDayCount, { total: this.countDays(), powder: this.countDays('powder'), backcountry: this.countDays('backcountry') }) : this.props.location.pathname === "/add-day" ? _react2.default.createElement(_AddDayForm.AddDayForm, { onNewDay: this.addDay }) : _react2.default.createElement(_SkiDayList2.default, { days: this.state.allSkiDays, filter: this.props.params.filter }),
                 _react2.default.createElement(_Menu.Menu, null)
             );
         }
@@ -25674,7 +25684,7 @@ var SkiDayRow = function (_React$Component) {
                 _react2.default.createElement(
                     'td',
                     { className: 'table-data' },
-                    this.props.date.getMonth() + 1 + '/' + this.props.date.getDate() + '/' + this.props.date.getFullYear()
+                    this.props.date
                 ),
                 _react2.default.createElement(
                     'td',
@@ -25701,7 +25711,7 @@ var SkiDayRow = function (_React$Component) {
 exports.default = SkiDayRow;
 
 SkiDayRow.propTypes = {
-    date: _propTypes2.default.object,
+    date: _propTypes2.default.string,
     resort: _propTypes2.default.string,
     powder: _propTypes2.default.bool,
     backcountry: _propTypes2.default.bool
@@ -25905,7 +25915,8 @@ var AddDayForm = exports.AddDayForm = function AddDayForm(_ref) {
     var resort = _ref.resort,
         date = _ref.date,
         powder = _ref.powder,
-        backcountry = _ref.backcountry;
+        backcountry = _ref.backcountry,
+        onNewDay = _ref.onNewDay;
 
     var _resort = void 0,
         _date = void 0,
@@ -25914,10 +25925,16 @@ var AddDayForm = exports.AddDayForm = function AddDayForm(_ref) {
 
     var submit = function submit(e) {
         e.preventDefault();
-        console.log('resort', _resort.value);
-        console.log('date', _date.value);
-        console.log('powder', _powder.checked);
-        console.log('backcountry', _backcountry.checked);
+        onNewDay({
+            resort: _resort.value,
+            date: _date.value,
+            powder: _powder.checked,
+            backcountry: _backcountry.checked
+        });
+        _resort.value = '';
+        _date.value = '';
+        _powder.checked = false;
+        _backcountry.checked = false;
     };
     return _react2.default.createElement(
         'form',
