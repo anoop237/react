@@ -24848,8 +24848,6 @@ var _SkiDayCount = __webpack_require__(98);
 
 var _AddDayForm = __webpack_require__(100);
 
-var _AddDayForm2 = _interopRequireDefault(_AddDayForm);
-
 var _Menu = __webpack_require__(101);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
@@ -24887,7 +24885,7 @@ var App = function (_React$Component) {
             return _react2.default.createElement(
                 'div',
                 null,
-                this.props.location.pathname === "/" ? _react2.default.createElement(_SkiDayCount.SkiDayCount, { total: this.countDays(), powder: this.countDays('powder'), backcountry: this.countDays('backcountry') }) : this.props.location.pathname === "/add-day" ? _react2.default.createElement(_AddDayForm2.default, null) : _react2.default.createElement(_SkiDayList2.default, { days: this.state.allSkiDays, filter: this.props.params.filter }),
+                this.props.location.pathname === "/" ? _react2.default.createElement(_SkiDayCount.SkiDayCount, { total: this.countDays(), powder: this.countDays('powder'), backcountry: this.countDays('backcountry') }) : this.props.location.pathname === "/add-day" ? _react2.default.createElement(_AddDayForm.AddDayForm, null) : _react2.default.createElement(_SkiDayList2.default, { days: this.state.allSkiDays, filter: this.props.params.filter }),
                 _react2.default.createElement(_Menu.Menu, null)
             );
         }
@@ -25887,8 +25885,7 @@ module.exports = exports['default'];
 Object.defineProperty(exports, "__esModule", {
     value: true
 });
-
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+exports.AddDayForm = undefined;
 
 var _react = __webpack_require__(1);
 
@@ -25904,99 +25901,82 @@ __webpack_require__(20);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+var AddDayForm = exports.AddDayForm = function AddDayForm(_ref) {
+    var resort = _ref.resort,
+        date = _ref.date,
+        powder = _ref.powder,
+        backcountry = _ref.backcountry;
 
-function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+    var _resort = void 0,
+        _date = void 0,
+        _powder = void 0,
+        _backcountry = void 0;
 
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-var AddDayForm = function (_React$Component) {
-    _inherits(AddDayForm, _React$Component);
-
-    function AddDayForm(props) {
-        _classCallCheck(this, AddDayForm);
-
-        var _this = _possibleConstructorReturn(this, (AddDayForm.__proto__ || Object.getPrototypeOf(AddDayForm)).call(this, props));
-
-        _this.submit = _this.submit.bind(_this);
-        return _this;
-    }
-
-    _createClass(AddDayForm, [{
-        key: 'submit',
-        value: function submit(e) {
-            e.preventDefault();
-            console.log('resort', this.refs.resort.value);
-            console.log('date', this.refs.date.value);
-            console.log('powder', this.refs.powder.checked);
-            console.log('backcountry', this.refs.backcountry.checked);
-        }
-    }, {
-        key: 'render',
-        value: function render() {
-            var _props = this.props,
-                resort = _props.resort,
-                date = _props.date,
-                powder = _props.powder,
-                backcountry = _props.backcountry;
-
-            return _react2.default.createElement(
-                'form',
-                { onSubmit: this.submit, className: 'add-day-form' },
-                _react2.default.createElement(
-                    'div',
-                    { className: 'form-group' },
-                    _react2.default.createElement(
-                        'label',
-                        { htmlFor: 'resort' },
-                        'Resort Name'
-                    ),
-                    _react2.default.createElement('input', { id: 'resort', type: 'text', defaultValue: resort, ref: 'resort' })
-                ),
-                _react2.default.createElement(
-                    'div',
-                    { className: 'form-group' },
-                    _react2.default.createElement(
-                        'label',
-                        { htmlFor: 'date' },
-                        'Date'
-                    ),
-                    _react2.default.createElement('input', { id: 'date', type: 'date', defaultValue: date, ref: 'date' })
-                ),
-                _react2.default.createElement(
-                    'div',
-                    { className: 'form-group' },
-                    _react2.default.createElement('input', { id: 'powder', type: 'checkbox', defaultChecked: powder, ref: 'powder' }),
-                    _react2.default.createElement(
-                        'label',
-                        { htmlFor: 'powder' },
-                        'Powder Day'
-                    )
-                ),
-                _react2.default.createElement(
-                    'div',
-                    { className: 'form-group' },
-                    _react2.default.createElement('input', { id: 'backcountry', type: 'checkbox', defaultChecked: backcountry, ref: 'backcountry' }),
-                    _react2.default.createElement(
-                        'label',
-                        { htmlFor: 'backcountry' },
-                        'Backcountry Day'
-                    )
-                ),
-                _react2.default.createElement(
-                    'button',
-                    { type: 'Submit' },
-                    'Add'
-                )
-            );
-        }
-    }]);
-
-    return AddDayForm;
-}(_react2.default.Component);
-
-exports.default = AddDayForm;
-
+    var submit = function submit(e) {
+        e.preventDefault();
+        console.log('resort', _resort.value);
+        console.log('date', _date.value);
+        console.log('powder', _powder.checked);
+        console.log('backcountry', _backcountry.checked);
+    };
+    return _react2.default.createElement(
+        'form',
+        { onSubmit: submit, className: 'add-day-form' },
+        _react2.default.createElement(
+            'div',
+            { className: 'form-group' },
+            _react2.default.createElement(
+                'label',
+                { htmlFor: 'resort' },
+                'Resort Name'
+            ),
+            _react2.default.createElement('input', { id: 'resort', type: 'text', defaultValue: resort, ref: function ref(input) {
+                    return _resort = input;
+                } })
+        ),
+        _react2.default.createElement(
+            'div',
+            { className: 'form-group' },
+            _react2.default.createElement(
+                'label',
+                { htmlFor: 'date' },
+                'Date'
+            ),
+            _react2.default.createElement('input', { id: 'date', type: 'date', defaultValue: date, ref: function ref(input) {
+                    return _date = input;
+                } })
+        ),
+        _react2.default.createElement(
+            'div',
+            { className: 'form-group' },
+            _react2.default.createElement('input', { id: 'powder', type: 'checkbox', defaultChecked: powder, ref: function ref(input) {
+                    return _powder = input;
+                } }),
+            _react2.default.createElement(
+                'label',
+                { htmlFor: 'powder' },
+                'Powder Day'
+            )
+        ),
+        _react2.default.createElement(
+            'div',
+            { className: 'form-group' },
+            _react2.default.createElement('input', { id: 'backcountry', type: 'checkbox', defaultChecked: backcountry, ref: function ref(input) {
+                    return _backcountry = input;
+                } }),
+            _react2.default.createElement(
+                'label',
+                { htmlFor: 'backcountry' },
+                'Backcountry Day'
+            )
+        ),
+        _react2.default.createElement(
+            'button',
+            { type: 'submit' },
+            'Add'
+        )
+    );
+};
 AddDayForm.defaultProps = {
     date: "2017-02-12",
     resort: "ABC",

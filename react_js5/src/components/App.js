@@ -2,7 +2,7 @@ import React from 'react';
 import {render} from 'react-dom';
 import SkiDayList from './SkiDayList.js';
 import {SkiDayCount} from './SkiDayCount';
-import AddDayForm from './AddDayForm.js';
+import {AddDayForm} from './AddDayForm';
 import {Menu} from './Menu';
 export default class App extends React.Component{
     constructor(props){
