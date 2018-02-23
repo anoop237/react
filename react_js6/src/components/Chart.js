@@ -32,9 +32,15 @@ export default class Chart extends React.Component{
       this.searchItem = this.searchItem.bind(this);
       this.setItem = this.setItem.bind(this);
      }
-    
+    componentDidMount(){
+        this.loadgraph();
+    }
+    componentWillUpdate(){
+        this.loadgraph();
+    }
     loadgraph(){  
-        fetch('https://www.alphavantage.co/query?function=TIME_SERIES_DAILY&symbol='+this.state.symbol+'&apikey=C9LLKPCQEMW4DVLR&outputsize=compact').then(results=>{
+        fetch('https://www.alphavantage.co/query?function=TIME_SERIES_DAILY&symbol='+this.state.symbol+'&apikey=C9LLKPCQEMW4DVLR&outputsize=compact')
+        .then(results=>{
             return results.json();
          }).then(data=>{
             var stock_data = data['Time Series (Daily)'];
@@ -146,7 +152,7 @@ export default class Chart extends React.Component{
         document.getElementById('suggestion-list').style.display='none';
     }
     render(){
-        {this.loadgraph()}
+        
         return(
             <div>
                 <div className="container">
