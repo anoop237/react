@@ -1,0 +1,28 @@
+{
+    "allSkiDays":[
+        {
+            "resort": "Kirkwood",
+            "date": "2017-10-20",
+            "powder": true,
+            "backcountry": false
+        },
+         {
+            "resort": "Squaw Valley",
+            "date": "2017-04-23",
+            "powder": true,
+            "backcountry": false
+        },
+         {
+            "resort": "Northsquare",
+            "date": "2017-03-20",
+            "powder": false,
+            "backcountry": true
+        }
+    ],
+    "goal":10,
+    "error":[],
+    "resortNames":{
+        "fetching":false,
+        "suggestions":["Squaw Valley","Snowbird","Stowe","Steamboat"]
+    }
+}
