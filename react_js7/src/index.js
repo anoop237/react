@@ -1,25 +1,44 @@
 import C from './constants'
-import {allSkiDays} from './store/reducers'
+import appReducer from './store/reducers'
+import initialState from './initialstate.json'
 
-const state = [{
-        "resort":"Squaw Valley",
-        "date":"2017-12-23",
-        "powder":true,
-        "backcountry":false
-    },
-    {
-        "resort":"Kirkwood",
-        "date":"2017-10-12",
-        "powder":false,
-        "backcountry": true
-    }]
-const action = {
-    type:C.REMOVE_DAY,
-    payload : "2017-12-23"
-}
-const nextState = allSkiDays(state,action)
+let state = initialState
+
 console.log(`
- initial state:${JSON.stringify(state)}
- action:${JSON.stringify(action)}
- new state:${JSON.stringify(nextState)}
+Initial State
+====================
+goal: ${state.goal}
+resorts: ${JSON.stringify(state.allSkiDays)}
+fetching: ${state.resortNames.fetching}
+suggestions:${state.resortNames.suggestions}
+`)
+
+
+state = appReducer(state,{
+    type:C.SET_GOAL,
+    payload:15
+})
+
+state = appReducer(state,{
+    type:C.ADD_DAY,
+    payload:{
+        "resort": "Squarebird",
+        "date": "2017-11-13",
+        "powder": false,
+        "backcountry": true
+    }
+})
+
+state = appReducer(state,{
+    type:C.CHANGE_SUGGESTIONS,
+    payload:["Resort1","Resort2"]
+})
+
+console.log(`
+Next State
+====================
+goal: ${state.goal}
+resorts: ${JSON.stringify(state.allSkiDays)}
+fetching: ${state.resortNames.fetching}
+suggestions:${state.resortNames.suggestions}
 `)
