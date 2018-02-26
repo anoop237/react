@@ -1,7 +1,7 @@
 {
   "name": "ski-day-counter",
   "version": "1.0.0",
-  "description": "redux app",
+  "description": "",
   "main": "index.js",
   "scripts": {
     "start": "./node_modules/.bin/webpack-dev-server"
