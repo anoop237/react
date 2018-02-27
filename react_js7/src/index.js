@@ -1,17 +1,29 @@
 import C from './constants'
 import appReducer from './store/reducers'
-//import initialState from './initialstate.json'
+import storeFactory from './store'
 import {createStore} from 'redux'
 
-const initialState = (localStorage['redux-store'])?
-JSON.parse(localStorage['redux-store'])
-:{}
-const store = createStore(appReducer,initialState)
+const store = storeFactory({})
 
 window.store = store
 
-store.subscribe(()=>{
-    const state = JSON.stringify(store.getState());
-    localStorage['redux-store'] = state;
+const unsubscribeGoalLogger = store.subscribe(()=>{
+    console.log(`  Goal ${store.getState().goal}`);
 })
+
+
+store.dispatch({
+    type:C.SET_GOAL,
+    payload:2
+
+});
+store.dispatch({
+    type:C.ADD_DAY,
+    payload:{
+        "resort":"Someresort",
+        "date":"2017-12-29",
+        "powder":true,
+        "backcountry":false
+    }
+});
 
