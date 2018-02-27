@@ -3,7 +3,10 @@ import appReducer from './store/reducers'
 import storeFactory from './store'
 import {createStore} from 'redux'
 
-const store = storeFactory({})
+const initialstate = (localStorage['redux-store'])?
+                        JSON.parse(localStorage['redux-store']):
+                        {}
+const store = storeFactory(initialstate)
 
 window.store = store
 
