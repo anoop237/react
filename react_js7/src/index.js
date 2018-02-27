@@ -14,7 +14,6 @@ const unsubscribeGoalLogger = store.subscribe(()=>{
     console.log(`  Goal ${store.getState().goal}`);
 })
 
-
 store.dispatch({
     type:C.SET_GOAL,
     payload:2
