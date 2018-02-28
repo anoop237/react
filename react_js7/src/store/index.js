@@ -7,7 +7,7 @@ const consoleMessages = store => next => action=> {
     console.groupCollapsed(`dispatching action => ${action.type}`)
     console.log('skidays',store.getState().allSkiDays.length)
     result = next(action)
-    console.log(`initial state ${store.getState()}`)
+    console.log(`initial state ${JSON.stringify(store.getState())}`)
     console.groupEnd()
     return result
 }
