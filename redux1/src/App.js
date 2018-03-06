@@ -3,6 +3,7 @@ import logo from './logo.svg';
 import './App.css';
 import {connect} from 'react-redux'
 import {updateUser} from './actions/user-actions'
+import { bindActionCreators } from 'redux'
 class App extends Component {
   constructor(props){
     super(props);
@@ -37,7 +38,16 @@ class App extends Component {
      userPlusProp:`${state.user}${props.randomProps}`
    }
  }
- const mapActionsToProps={
-   onUpdateUser:updateUser
+ const mapActionsToProps=(dispatch,props)=>{
+   return bindActionCreators({onUpdateUser:updateUser},dispatch);
  }
-export default connect(mapStateToProps,mapActionsToProps)(App);
+
+ const mergeProps=(propsFromState,propsFromDispatch,ownProps)=>{
+  console.log(propsFromState,propsFromDispatch,ownProps); 
+  return {
+     
+   };
+ }
+ 
+ 
+export default connect(mapStateToProps,mapActionsToProps,mergeProps)(App);
