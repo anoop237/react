@@ -1,9 +1,20 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
-
+import {connect} from 'react-redux'
+import {updateUser} from './actions/user-actions'
 class App extends Component {
+  constructor(props){
+    super(props);
+    this.onUpdateUser = this.onUpdateUser.bind(this)
+  }
+  onUpdateUser(event){
+    const {dispatch} =this.props
+   // dispatch(updateUser(event.target.value))
+    this.props.onUpdateUser(event.target.value)
+  }
   render() {
+    console.log('Initial state',this.props)
     return (
       <div className="App">
         <header className="App-header">
@@ -13,9 +24,20 @@ class App extends Component {
         <p className="App-intro">
           To get started, edit <code>src/App.js</code> and save to reload.
         </p>
+        <input onChange={this.onUpdateUser}/>
+        <div>{this.props.user}</div>
       </div>
     );
   }
 }
-
-export default App;
+ const mapStateToProps=(state,props)=>{
+   return {
+     products:state.products,
+     user:state.user,
+     userPlusProp:`${state.user}${props.randomProps}`
+   }
+ }
+ const mapActionsToProps={
+   onUpdateUser:updateUser
+ }
+export default connect(mapStateToProps,mapActionsToProps)(App);
