@@ -107,6 +107,16 @@ export default class Chart extends React.Component{
 
         // create the chart
             Highcharts.stockChart('container', {
+                chart:{
+                    events:{
+                        load:function(){
+                           var series=this.series[0]
+                           setInterval(function(){
+                                
+                            },1000)
+                        }
+                    }
+                },
                 rangeSelector: {selected: 1},
                 title: {text: this.state.symbol+' Stock Price'},
                 series: series
@@ -154,7 +164,7 @@ export default class Chart extends React.Component{
     render(){
         
         return(
-            <div>
+            <div> <div><MainMenu/></div>
                 <div className="container">
                     <div className="row"><h4>HighStock {this.state.company}</h4></div>
                     <div className="row">

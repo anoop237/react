@@ -1,6 +1,8 @@
 import React from 'react'
 import {Footer} from './Footer'
+import MainMenu from './MainMenu'
 export const Gallery = ()=><div>
+             <div><MainMenu/></div>
             <div className="center-align">
                 <h4>Our <span className="red-text text-darken-4">Gallery</span></h4>
                 <div className="title-line"></div>

@@ -1,7 +1,9 @@
 import React from 'react'
 import {Footer} from './Footer'
+import MainMenu from './MainMenu'
 export const MemberList = ()=>
         <div>
+            <div><MainMenu/></div>
            <div className="center-align">
                 <h4>Meet our <span className="red-text text-darken-4">Team</span></h4>
                 <div className="title-line"></div>

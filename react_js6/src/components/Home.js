@@ -1,17 +1,22 @@
 import React from 'react'
 import MainMenu from './MainMenu'
 import {Footer} from './Footer'
+import {Redirect} from 'react-router-dom'
+import history from '../history'
 export default class Home extends React.Component{     
     componentDidMount() {
          $('.carousel').carousel({fullWidth:true});
          setInterval(function(){
              $('.carousel').carousel('next');
+              history.push('/about')
          },15000);
+     
     }
     render(){
         return(
             <div>
                 <div><MainMenu/></div>
+               
                 <div className="carousel carousel-slider" data-indicators="true">
                     <a href="#" className="carousel-item"><img src="assets/images/image1.jpg"/></a>
                     <a href="#" className="carousel-item"><img src="assets/images/image2.jpg"/></a>

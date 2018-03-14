@@ -1,7 +1,9 @@
 import React from 'react'
 import {Footer} from './Footer'
+import MainMenu from './MainMenu'
 export const About = ()=>
         <div>
+            <div><MainMenu/></div>
             <div className="center-align">
                 <h4>Director's <span className="red-text text-darken-4">Message</span></h4>
                 <div className="title-line"></div>
