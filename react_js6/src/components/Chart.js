@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom'
 import MainMenu from './MainMenu'
 import Highcharts from 'highcharts/highstock'
 import {Footer} from './Footer'
+import ReactSpeedometer from 'react-d3-speedometer'
 export default class Chart extends React.Component{     
     constructor(props){
       super(props);
@@ -27,13 +28,24 @@ export default class Chart extends React.Component{
             {company:"Seagate Technology",symbol:"STX"},
             {company:"Cognizant Technology Solutions",symbol:"CTSH"}
         ];
-      this.state={company:'Microsoft',symbol:'MSFT',chart_type:'candlestick',list:list}
+      this.state={
+          company:'Microsoft',
+          symbol:'MSFT',
+          chart_type:'candlestick',
+          list,
+          metervalue:142
+    }
       this.handleChange = this.handleChange.bind(this);
       this.searchItem = this.searchItem.bind(this);
       this.setItem = this.setItem.bind(this);
      }
     componentDidMount(){
         this.loadgraph();
+        setInterval(()=>{
+            this.setState({
+                metervalue:Math.floor(Math.random()*(500 - 0) + 0)
+            })
+        },5000)
     }
     componentWillUpdate(){
         this.loadgraph();
@@ -194,6 +206,23 @@ export default class Chart extends React.Component{
                         </div>
                     </div>
                     <div id="container" className="chart-container"></div>
+                    <h4>Progress</h4>
+                    <div style={{width: "500px", height: "300px", background: "#EFEFEF"}}>
+                        
+                        <ReactSpeedometer
+                            fluidWidth
+                            minValue={0}
+                            maxValue={500}
+                            segments={10}
+                            valueFormat="d"
+                            textColor="#9bdc22"
+                            needleColor="red"
+                            currentValueText="Current Price: ${value}"
+                            value={this.state.metervalue}
+                           // needleTransitionDuration={4000}
+                            //needleTransition="easeElastic"
+                        />
+                     </div>
                 </div>
                 <Footer/>
             </div>

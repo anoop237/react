@@ -3,12 +3,26 @@ import MainMenu from './MainMenu'
 import {Footer} from './Footer'
 import {Redirect} from 'react-router-dom'
 import history from '../history'
+
+import StarRatings from 'react-star-ratings';
+ 
+
 export default class Home extends React.Component{     
+    constructor(props){
+        super(props)
+        this.state={rating:0}
+        this.changeRating=this.changeRating.bind(this)
+    }
+    changeRating( newRating ) {
+      this.setState({
+        rating: newRating
+      });
+    }
     componentDidMount() {
          $('.carousel').carousel({fullWidth:true});
          setInterval(function(){
              $('.carousel').carousel('next');
-              history.push('/about')
+             //history.push('/about')
          },15000);
      
     }
@@ -56,7 +70,14 @@ export default class Home extends React.Component{
                             <h4 className="wc-tittle">Transport</h4>
                             <p className="justify">The College provides transport facility from almost all parts of the city. One need not worry about commuting to the College.Buses playing around the city would definitely help the students to travel from their homes to the Collegey without much ado.</p>
                         </div>
-                    </div>				
+                    </div>
+                    <StarRatings
+                        rating={this.state.rating}
+                        starRatedColor="blue"
+                        changeRating={this.changeRating}
+                        numberOfStars={5}
+                        starDimension="20px"
+                        />				
                 </div>
                 <Footer/>
             </div>
